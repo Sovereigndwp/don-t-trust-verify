@@ -35,19 +35,19 @@ To run a local development server, you can use:
 
 ```bash
 # Python 3
-python -m http.server 8000
+python -m http.server 8001
 
 # Python 2
-python -m SimpleHTTPServer 8000
+python -m SimpleHTTPServer 8001
 
 # Node.js (if you have http-server installed)
 npx http-server
 
 # PHP
-php -S localhost:8000
+php -S localhost:8001
 ```
 
-Then open http://localhost:8000 in your browser.
+Then open http://localhost:8001 in your browser.
 
 ## Customization
 
