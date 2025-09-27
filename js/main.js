@@ -748,3 +748,232 @@ window.startGeneratedCourse = function(courseId) {
 setTimeout(() => {
     updateIntelligence();
 }, 3000);
+
+// === WHY BITCOIN SECTION - FIRST PRINCIPLES ===
+
+// Track principles understood
+let principlesUnderstood = new Set();
+
+// Load saved progress from localStorage
+function loadPrinciplesProgress() {
+    const saved = localStorage.getItem('principlesUnderstood');
+    if (saved) {
+        principlesUnderstood = new Set(JSON.parse(saved));
+        updatePrinciplesProgress();
+        // Mark cards as understood
+        principlesUnderstood.forEach(principle => {
+            const card = document.querySelector(`[data-principle="${principle}"]`);
+            if (card) card.classList.add('understood');
+        });
+    }
+}
+
+// Update progress display
+function updatePrinciplesProgress() {
+    const counter = document.getElementById('principles-understood');
+    if (counter) {
+        counter.textContent = principlesUnderstood.size;
+    }
+}
+
+// Mark principle as understood
+window.markPrincipleUnderstood = function(principle) {
+    principlesUnderstood.add(principle);
+    localStorage.setItem('principlesUnderstood', JSON.stringify([...principlesUnderstood]));
+    
+    // Update UI
+    const card = document.querySelector(`[data-principle="${principle}"]`);
+    if (card) {
+        card.classList.add('understood');
+    }
+    
+    updatePrinciplesProgress();
+    
+    // Celebration if all understood
+    if (principlesUnderstood.size === 5) {
+        alert('🎉 Congratulations! You\'ve mastered all Bitcoin first principles!');
+    }
+};
+
+// === DEMO: DOUBLE-SPEND ===
+
+const ledger = [];
+let aliceBalance = 10; // Start Alice with 10 BTC
+
+window.demoSend = function(from, to, amount) {
+    const ledgerEl = document.getElementById('ledger-entries');
+    const statusEl = document.getElementById('double-spend-status');
+    
+    // Add to ledger
+    const entry = `${from} sends ${amount} BTC to ${to}`;
+    ledger.push(entry);
+    aliceBalance -= amount;
+    
+    // Update UI
+    const li = document.createElement('li');
+    li.textContent = entry;
+    ledgerEl.appendChild(li);
+    
+    statusEl.className = 'status success';
+    statusEl.textContent = `✅ Transaction recorded. Alice balance: ${aliceBalance} BTC`;
+};
+
+window.demoDoubleSpend = function(from, to, amount) {
+    const statusEl = document.getElementById('double-spend-status');
+    
+    if (aliceBalance < amount) {
+        statusEl.className = 'status error';
+        statusEl.textContent = `❌ Double-spend prevented! Alice only has ${aliceBalance} BTC. The ledger protects against this.`;
+    } else {
+        // In theory this would succeed without a ledger
+        statusEl.className = 'status error';
+        statusEl.textContent = '❌ Without a shared ledger, this double-spend would succeed! Bitcoin\'s blockchain prevents this.';
+    }
+};
+
+// === DEMO: TRUST PROBLEM ===
+
+window.evaluateKeeper = function() {
+    const selected = document.querySelector('input[name="keeper"]:checked').value;
+    const resultEl = document.getElementById('keeper-result');
+    
+    const risks = {
+        'central-bank': {
+            text: '🏛️ Central Bank: Can print unlimited money (inflation), freeze accounts, implement negative rates. History: 1971 gold standard removal, 2008 bailouts, 2022 40% money supply increase.',
+            class: 'error'
+        },
+        'tech-company': {
+            text: '🏢 Tech Company: Motivated by profit, can sell your data, change terms anytime, may go bankrupt. Examples: PayPal froze WikiLeaks, Canadian truckers debanked.',
+            class: 'error'
+        },
+        'cooperative': {
+            text: '🤝 Cooperative: Better but still has central points of failure, governance disputes, potential for corruption over time.',
+            class: 'error'
+        },
+        'algorithm': {
+            text: '⚡ Decentralized Algorithm: No single point of failure, transparent rules, no one can freeze/inflate/control. This is Bitcoin\'s innovation!',
+            class: 'success'
+        }
+    };
+    
+    const risk = risks[selected];
+    resultEl.className = `result ${risk.class}`;
+    resultEl.textContent = risk.text;
+};
+
+// === DEMO: CONSENSUS ===
+
+window.simulateConsensus = function() {
+    const nodes = document.querySelectorAll('.node-toggle');
+    const resultEl = document.getElementById('consensus-result');
+    
+    let honest = 0;
+    let dishonest = 0;
+    
+    nodes.forEach(node => {
+        if (node.checked) {
+            honest++;
+        } else {
+            dishonest++;
+        }
+    });
+    
+    const total = honest + dishonest;
+    const honestPercent = (honest / total * 100).toFixed(0);
+    
+    if (honest > dishonest) {
+        resultEl.className = 'result success';
+        resultEl.textContent = `✅ Consensus achieved! ${honest}/${total} nodes (${honestPercent}%) are honest. The majority wins.`;
+    } else {
+        resultEl.className = 'result error';
+        resultEl.textContent = `❌ Consensus failed! Only ${honest}/${total} nodes (${honestPercent}%) are honest. Need >50% for security.`;
+    }
+};
+
+// === DEMO: PROOF OF WORK ===
+
+// Simple hash function for demo
+function simpleHash(text) {
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+        const char = text.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash).toString(16).padStart(8, '0');
+}
+
+window.tryNonce = function() {
+    const message = document.getElementById('pow-message').value;
+    const difficulty = parseInt(document.getElementById('pow-difficulty').value);
+    const nonce = document.getElementById('pow-nonce').value;
+    const hashEl = document.getElementById('pow-hash');
+    const statusEl = document.getElementById('pow-status');
+    
+    const fullMessage = message + nonce;
+    const hash = simpleHash(fullMessage);
+    const target = '0'.repeat(difficulty);
+    
+    hashEl.textContent = hash;
+    
+    if (hash.startsWith(target)) {
+        statusEl.className = 'status success';
+        statusEl.textContent = `✅ Valid proof of work! Hash starts with ${difficulty} zeros.`;
+    } else {
+        statusEl.className = 'status error';
+        statusEl.textContent = `❌ Invalid. Need ${difficulty} leading zeros. Try a different nonce.`;
+    }
+};
+
+window.autoSolve = function() {
+    const message = document.getElementById('pow-message').value;
+    const difficulty = parseInt(document.getElementById('pow-difficulty').value);
+    const nonceEl = document.getElementById('pow-nonce');
+    const hashEl = document.getElementById('pow-hash');
+    const statusEl = document.getElementById('pow-status');
+    
+    const target = '0'.repeat(difficulty);
+    let nonce = 0;
+    let hash = '';
+    
+    // Try up to 100000 times
+    for (nonce = 0; nonce < 100000; nonce++) {
+        const fullMessage = message + nonce;
+        hash = simpleHash(fullMessage);
+        if (hash.startsWith(target)) {
+            break;
+        }
+    }
+    
+    nonceEl.value = nonce;
+    hashEl.textContent = hash;
+    
+    if (hash.startsWith(target)) {
+        statusEl.className = 'status success';
+        statusEl.textContent = `✅ Solved! Nonce ${nonce} produces valid proof. This took ${nonce} attempts.`;
+    } else {
+        statusEl.className = 'status error';
+        statusEl.textContent = '❌ Could not find solution in 100,000 attempts. Try lowering difficulty.';
+    }
+};
+
+window.resetPow = function() {
+    document.getElementById('pow-nonce').value = 0;
+    document.getElementById('pow-hash').textContent = '-';
+    document.getElementById('pow-status').textContent = '';
+    document.getElementById('pow-status').className = 'status';
+};
+
+// Initialize principles progress on load
+document.addEventListener('DOMContentLoaded', function() {
+    loadPrinciplesProgress();
+    
+    // Initialize ledger display
+    const ledgerEl = document.getElementById('ledger-entries');
+    if (ledgerEl && ledger.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'Alice starts with 10 BTC';
+        li.style.color = '#f7931a';
+        ledgerEl.appendChild(li);
+    }
+});

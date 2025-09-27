@@ -23,6 +23,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#why-bitcoin">Why Bitcoin</a></li>
                 <li><a href="#learn">Learn</a></li>
                 <li><a href="#simulate">Simulate</a></li>
                 <li><a href="#courses">Courses</a></li>
@@ -72,6 +73,180 @@
                     <button class="cta-primary" onclick="startInteractiveLearning()">Start Interactive Learning</button>
                     <button class="cta-secondary" onclick="exploreSimulations()">Explore Simulations</button>
                 </div>
+            </div>
+        </section>
+
+        <!-- Why Bitcoin - First Principles Section -->
+        <section id="why-bitcoin" class="why-bitcoin">
+            <div class="section-header">
+                <h2>Why Bitcoin: First Principles</h2>
+                <p>Understand the problems with today’s financial system and how Bitcoin solves them</p>
+                <div class="principles-progress">
+                    <span id="principles-understood">0</span>/5 principles understood
+                </div>
+            </div>
+
+            <div class="principles-grid">
+                <!-- Principle 0: What makes money good? -->
+                <div class="principle-card" data-principle="money-properties">
+                    <div class="principle-header">
+                        <h3>Principle 0: What Makes Money Good?</h3>
+                        <span class="tag">Sound Money</span>
+                    </div>
+                    <p>Compare properties of different monies: scarcity, durability, divisibility, portability, verifiability, and fungibility.</p>
+                    <div class="demo" id="demo-money-properties">
+                        <div class="properties-table">
+                            <div class="properties-row header">
+                                <div>Property</div>
+                                <div>Shells</div>
+                                <div>Gold</div>
+                                <div>Fiat</div>
+                                <div>Bitcoin</div>
+                            </div>
+                            <div class="properties-row">
+                                <div>Scarcity</div>
+                                <div>★</div>
+                                <div>★★★</div>
+                                <div>★</div>
+                                <div>★★★★</div>
+                            </div>
+                            <div class="properties-row">
+                                <div>Durability</div>
+                                <div>★</div>
+                                <div>★★★★</div>
+                                <div>★★★</div>
+                                <div>★★★★</div>
+                            </div>
+                            <div class="properties-row">
+                                <div>Divisibility</div>
+                                <div>★</div>
+                                <div>★★</div>
+                                <div>★★★</div>
+                                <div>★★★★</div>
+                            </div>
+                            <div class="properties-row">
+                                <div>Portability</div>
+                                <div>★</div>
+                                <div>★★</div>
+                                <div>★★★★</div>
+                                <div>★★★★</div>
+                            </div>
+                            <div class="properties-row">
+                                <div>Verifiability</div>
+                                <div>★</div>
+                                <div>★★</div>
+                                <div>★★★</div>
+                                <div>★★★★</div>
+                            </div>
+                            <div class="properties-row">
+                                <div>Fungibility</div>
+                                <div>★★</div>
+                                <div>★★★</div>
+                                <div>★★★</div>
+                                <div>★★★</div>
+                            </div>
+                        </div>
+                        <small class="demo-caption">Interactive comparison demo by Dalia</small>
+                    </div>
+                    <button class="understood-btn" onclick="markPrincipleUnderstood('money-properties')">I understand</button>
+                </div>
+
+                <!-- Principle 1: Double-Spending Problem -->
+                <div class="principle-card" data-principle="double-spend">
+                    <div class="principle-header">
+                        <h3>Principle 1: The Double-Spend Problem</h3>
+                        <span class="tag">Digital Money</span>
+                    </div>
+                    <p>Why digital money is hard: without a global ledger, the same coin can be spent twice.</p>
+                    <div class="demo" id="demo-double-spend">
+                        <div class="ledger">
+                            <div class="ledger-title">Shared Ledger</div>
+                            <ul id="ledger-entries"></ul>
+                        </div>
+                        <div class="actions">
+                            <button onclick="demoSend('Alice','Bob',1)">Alice → 1 BTC → Bob</button>
+                            <button onclick="demoDoubleSpend('Alice','Charlie',1)">Try Double-Spend to Charlie</button>
+                        </div>
+                        <div id="double-spend-status" class="status"></div>
+                        <small class="demo-caption">Original educational demo by Dalia</small>
+                    </div>
+                    <button class="understood-btn" onclick="markPrincipleUnderstood('double-spend')">I understand</button>
+                </div>
+
+                <!-- Principle 2: The Trust Problem -->
+                <div class="principle-card" data-principle="trust-problem">
+                    <div class="principle-header">
+                        <h3>Principle 2: The Trust Problem</h3>
+                        <span class="tag">Centralization</span>
+                    </div>
+                    <p>Who controls the ledger controls you. History shows centralized power gets abused.</p>
+                    <div class="demo" id="demo-trust">
+                        <div class="keeper-options">
+                            <label><input type="radio" name="keeper" value="central-bank"> Central Bank</label>
+                            <label><input type="radio" name="keeper" value="tech-company"> Tech Company</label>
+                            <label><input type="radio" name="keeper" value="cooperative"> Cooperative</label>
+                            <label><input type="radio" name="keeper" value="algorithm" checked> Decentralized Algorithm</label>
+                        </div>
+                        <button onclick="evaluateKeeper()">Evaluate Risks</button>
+                        <div id="keeper-result" class="result"></div>
+                        <small class="demo-caption">Original educational demo by Dalia</small>
+                    </div>
+                    <button class="understood-btn" onclick="markPrincipleUnderstood('trust-problem')">I understand</button>
+                </div>
+
+                <!-- Principle 3: Consensus Among Strangers -->
+                <div class="principle-card" data-principle="consensus">
+                    <div class="principle-header">
+                        <h3>Principle 3: Consensus Among Strangers</h3>
+                        <span class="tag">Byzantine Faults</span>
+                    </div>
+                    <p>How can thousands of strangers agree on truth when some are dishonest?</p>
+                    <div class="demo" id="demo-consensus">
+                        <div class="nodes">
+                            <label><input type="checkbox" class="node-toggle" checked> Node 1 (Honest)</label>
+                            <label><input type="checkbox" class="node-toggle" checked> Node 2 (Honest)</label>
+                            <label><input type="checkbox" class="node-toggle" checked> Node 3 (Honest)</label>
+                            <label><input type="checkbox" class="node-toggle"> Node 4 (Dishonest)</label>
+                            <label><input type="checkbox" class="node-toggle" checked> Node 5 (Honest)</label>
+                        </div>
+                        <button onclick="simulateConsensus()">Simulate Consensus</button>
+                        <div id="consensus-result" class="result"></div>
+                        <small class="demo-caption">Original educational demo by Dalia</small>
+                    </div>
+                    <button class="understood-btn" onclick="markPrincipleUnderstood('consensus')">I understand</button>
+                </div>
+
+                <!-- Principle 4: Proof of Work -->
+                <div class="principle-card" data-principle="pow">
+                    <div class="principle-header">
+                        <h3>Principle 4: Proof of Work</h3>
+                        <span class="tag">Security</span>
+                    </div>
+                    <p>Make voting expensive so fake identities don’t matter. Find a hash with leading zeros.</p>
+                    <div class="demo" id="demo-pow">
+                        <div class="pow-controls">
+                            <label>Message: <input type="text" id="pow-message" value="Alice pays Bob 1 BTC"></label>
+                            <label>Difficulty: <input type="number" id="pow-difficulty" value="4" min="1" max="6"> leading zeros</label>
+                            <div class="pow-row">
+                                <label>Nonce: <input type="number" id="pow-nonce" value="0"></label>
+                                <button onclick="tryNonce()">Try Nonce</button>
+                                <button onclick="autoSolve()">Auto-Solve</button>
+                                <button onclick="resetPow()">Reset</button>
+                            </div>
+                        </div>
+                        <div class="pow-output">
+                            <div>Hash: <code id="pow-hash">-</code></div>
+                            <div id="pow-status" class="status"></div>
+                        </div>
+                        <small class="demo-caption">Original educational demo by Dalia</small>
+                    </div>
+                    <button class="understood-btn" onclick="markPrincipleUnderstood('pow')">I understand</button>
+                </div>
+            </div>
+
+            <div class="context-note">
+                <p>These principles include monetary cycles, inflation risk, centralization risks, and why Bitcoin’s design (scarcity, decentralization, proof of work) addresses them.</p>
+                <p class="source-note">Content curated by MCP Agent Kit, synthesized and authored by Dalia. Interactive demos are original and not sourced from third-party websites.</p>
             </div>
         </section>
 
@@ -365,7 +540,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Learn Bitcoin By Doing. Powered by MCP Agent Kit.</p>
+            <p>&copy; 2025 Learn Bitcoin By Doing. Created by Dalia.</p>
         </div>
     </footer>
 

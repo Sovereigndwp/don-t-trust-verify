@@ -488,6 +488,360 @@ section {
     box-shadow: 0 10px 25px rgba(247, 147, 26, 0.3);
 }
 
+/* Why Bitcoin Section */
+.why-bitcoin {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    color: var(--text-light);
+}
+
+.why-bitcoin .section-header h2 {
+    color: var(--bitcoin-orange);
+}
+
+.principles-progress {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(247, 147, 26, 0.1);
+    border: 2px solid var(--bitcoin-orange);
+    border-radius: 50px;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#principles-understood {
+    color: var(--bitcoin-orange);
+    font-size: 1.5rem;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.principle-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(247, 147, 26, 0.3);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.principle-card.understood {
+    border-color: var(--accent-green);
+    background: rgba(39, 174, 96, 0.05);
+}
+
+.principle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px var(--shadow-medium);
+    border-color: var(--bitcoin-orange);
+}
+
+.principle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.principle-header h3 {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    flex: 1;
+}
+
+.principle-header .tag {
+    background: var(--gradient-orange);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.principle-card p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+/* Demo Styles */
+.demo {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(247, 147, 26, 0.2);
+}
+
+.demo-caption {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Money Properties Table */
+.properties-table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.properties-row {
+    display: table-row;
+}
+
+.properties-row > div {
+    display: table-cell;
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid rgba(247, 147, 26, 0.2);
+}
+
+.properties-row.header > div {
+    background: rgba(247, 147, 26, 0.1);
+    font-weight: 600;
+    color: var(--bitcoin-orange);
+}
+
+.properties-row > div:first-child {
+    text-align: left;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Ledger Demo */
+.ledger {
+    background: rgba(52, 152, 219, 0.1);
+    border: 1px solid var(--accent-blue);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ledger-title {
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 0.5rem;
+}
+
+#ledger-entries {
+    list-style: none;
+    padding: 0;
+    min-height: 60px;
+}
+
+#ledger-entries li {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.actions button,
+.keeper-options + button,
+.nodes + button,
+.pow-controls button {
+    background: var(--gradient-orange);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.actions button:hover,
+.keeper-options + button:hover,
+.nodes + button:hover,
+.pow-controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(247, 147, 26, 0.3);
+}
+
+.status, .result {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    min-height: 50px;
+    transition: all 0.3s ease;
+}
+
+.status.error, .result.error {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+}
+
+.status.success, .result.success {
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* Trust Demo */
+.keeper-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.keeper-options label {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.keeper-options label:hover {
+    background: rgba(247, 147, 26, 0.1);
+}
+
+.keeper-options input[type="radio"] {
+    margin-right: 1rem;
+}
+
+/* Consensus Demo */
+.nodes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.nodes label {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.nodes label:hover {
+    background: rgba(247, 147, 26, 0.1);
+}
+
+/* Proof of Work Demo */
+.pow-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pow-controls label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pow-controls input[type="text"],
+.pow-controls input[type="number"] {
+    flex: 1;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(247, 147, 26, 0.3);
+    border-radius: 4px;
+    color: var(--text-light);
+}
+
+.pow-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pow-row button {
+    flex: 0 0 auto;
+}
+
+.pow-output {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+#pow-hash {
+    color: var(--bitcoin-orange);
+    word-break: break-all;
+}
+
+/* Understood Button */
+.understood-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.understood-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+}
+
+.principle-card.understood .understood-btn {
+    background: rgba(39, 174, 96, 0.2);
+    cursor: default;
+    pointer-events: none;
+}
+
+.principle-card.understood .understood-btn::after {
+    content: " ✓";
+}
+
+/* Context Note */
+.context-note {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(247, 147, 26, 0.05);
+    border-left: 4px solid var(--bitcoin-orange);
+    border-radius: 8px;
+}
+
+.context-note p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.source-note {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+}
+
 /* Simulations */
 .simulations {
     background: var(--gradient-dark);
