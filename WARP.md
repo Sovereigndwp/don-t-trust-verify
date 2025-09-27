@@ -89,6 +89,75 @@ npx browser-sync start --server --files "*.html,css/*.css,js/*.js"
 - Reference in HTML using relative paths: `<img src="images/filename.jpg">`
 - Consider adding CSS for responsive images and optimization
 
+## Bitcoin MCP Agent Integration
+
+### BTC MCP Agent Kit Connection
+This website project can potentially leverage the **btc-mcp-agent** repository, which is a Bitcoin-focused MCP (Model Context Protocol) agent built as a Canva App:
+
+```bash
+# Start the Bitcoin MCP Agent (Canva App)
+cd /Users/dalia/projects/btc-mcp-agent
+npm start  # Starts on http://localhost:8080 (Canva integration required)
+
+# The agent runs as a Canva App with MCP capabilities for Bitcoin operations
+```
+
+### Bitcoin-Focused MCP Capabilities
+The Bitcoin MCP agent provides comprehensive Bitcoin education and data services:
+
+#### **Content Aggregation Sources**
+- **Personal Knowledge**: Notion databases and ChatGPT conversations
+- **Educational Resources**: Learn Me A Bitcoin (Greg Walker's comprehensive guides)
+- **Official Documentation**: Bitcoin.org technical specifications
+- **Live Blockchain Data**: Mempool.space for real-time transaction/block info
+- **Bitcoin Advisory**: TheBitcoinAdviser.com insights and analysis
+- **Educational Hub**: Looking Glass Education courses and deep dives
+
+#### **Core MCP Tools**
+- **Educational Content Generation**: Create Bitcoin learning materials from curated sources
+- **Blockchain Data Retrieval**: Real-time Bitcoin network statistics and transaction data
+- **Technical Documentation**: Generate explanations for Bitcoin concepts (UTXO, SegWit, Taproot, etc.)
+- **Address/Transaction Analysis**: Validate addresses, decode transactions, explain script types
+- **Price and Market Data**: Historical and real-time Bitcoin pricing information
+- **Security Best Practices**: Wallet security, key management, and custody guidance
+
+### Website Integration Scenarios
+
+#### **Bitcoin Learning Website**
+```html
+<!-- Example: Dynamic Bitcoin education content -->
+<section id="bitcoin-concept">
+    <h2>Understanding UTXOs</h2>
+    <div id="explanation-content"></div> <!-- Populated by MCP agent -->
+    <div id="visual-example"></div> <!-- Interactive examples -->
+</section>
+```
+
+#### **Live Blockchain Dashboard**
+```javascript
+// Fetch real-time blockchain data from MCP agent
+async function updateBlockchainStats() {
+    const stats = await mcpAgent.getBlockchainStats();
+    document.getElementById('current-height').textContent = stats.blockHeight;
+    document.getElementById('mempool-size').textContent = stats.mempoolSize;
+    document.getElementById('difficulty').textContent = stats.difficulty;
+}
+```
+
+#### **Educational Resource Hub**
+- **Beginner Guides**: Auto-generated content from learnmeabitcoin.com concepts
+- **Technical Deep Dives**: Advanced topics sourced from Looking Glass Education
+- **Interactive Tools**: Transaction builders, address validators, unit converters
+- **Current Events**: Bitcoin network updates and educational news
+
+### Cross-Project Architecture
+The MCP agent serves as an intelligent Bitcoin knowledge aggregator:
+- **Multi-Source Integration**: Combines personal notes, expert content, and live data
+- **Contextual Content Generation**: Creates relevant educational material based on user queries
+- **Real-Time Data Pipeline**: Continuously updated blockchain and market information
+- **Educational Progression**: Structured learning paths from beginner to advanced topics
+- **API Exposure**: RESTful endpoints for website integration via HTTP requests
+
 ## Browser Compatibility
 
 The codebase uses modern web standards:

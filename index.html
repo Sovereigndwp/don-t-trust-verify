@@ -3,42 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Learn Bitcoin By Doing - Interactive Bitcoin Education</title>
+    <meta name="description" content="Master Bitcoin through hands-on experience, real-time data, and interactive simulations powered by AI">
+    <link rel="stylesheet" href="css/style-enhanced.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
+    <!-- Header with Bitcoin Network Status -->
+    <header id="header">
         <nav>
-            <ul>
+            <div class="nav-brand">
+                <h1>Learn Bitcoin By Doing</h1>
+                <div class="bitcoin-status" id="bitcoin-status">
+                    <span class="status-indicator" id="network-status"></span>
+                    <span class="btc-price" id="btc-price">Loading...</span>
+                </div>
+            </div>
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#learn">Learn</a></li>
+                <li><a href="#simulate">Simulate</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#intelligence">Intelligence</a></li>
+                <li><a href="#tools">Tools</a></li>
             </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section id="home">
-            <h2>Home</h2>
-            <p>This is the homepage of my website. Welcome!</p>
+        <!-- Hero Section with Live Bitcoin Data -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Learn Bitcoin <em>By Doing</em></h1>
+                <p class="hero-subtitle">Master Bitcoin through hands-on experience, real-time data, and interactive simulations</p>
+                
+                <!-- Live Bitcoin Dashboard -->
+                <div class="live-dashboard">
+                    <div class="dashboard-card">
+                        <h3>Current Network</h3>
+                        <div class="metric-value" id="block-height">Loading...</div>
+                        <div class="metric-label">Block Height</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Mempool Size</h3>
+                        <div class="metric-value" id="mempool-size">Loading...</div>
+                        <div class="metric-label">Transactions</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Fee Estimate</h3>
+                        <div class="metric-value" id="fee-estimate">Loading...</div>
+                        <div class="metric-label">sats/vB</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Mining Difficulty</h3>
+                        <div class="metric-value" id="difficulty">Loading...</div>
+                        <div class="metric-label">Adjusted</div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="cta-primary" onclick="startInteractiveLearning()">Start Interactive Learning</button>
+                    <button class="cta-secondary" onclick="exploreSimulations()">Explore Simulations</button>
+                </div>
+            </div>
         </section>
 
-        <section id="about">
-            <h2>About</h2>
-            <p>Learn more about what this website is all about.</p>
+        <!-- Interactive Learning Modules -->
+        <section id="learn" class="learning-modules">
+            <div class="section-header">
+                <h2>Interactive Learning Modules</h2>
+                <p>Discover Bitcoin concepts through guided exploration and hands-on practice</p>
+            </div>
+
+            <div class="modules-grid">
+                <!-- Bitcoin Fundamentals Module -->
+                <div class="module-card" data-module="fundamentals">
+                    <div class="module-header">
+                        <h3>Bitcoin Fundamentals</h3>
+                        <div class="module-status">
+                            <span class="difficulty">Beginner</span>
+                            <span class="duration">2-3 hours</span>
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <p>Master the basics through Socratic questioning and real-world examples</p>
+                        <ul class="learning-objectives">
+                            <li>What is Bitcoin and how does it work?</li>
+                            <li>Understanding digital scarcity</li>
+                            <li>Bitcoin vs traditional money</li>
+                        </ul>
+                        <div class="module-preview" id="fundamentals-preview">
+                            <div class="socratic-question">
+                                <strong>Explore:</strong> "Why do people say Bitcoin is 'digital gold'?"
+                            </div>
+                        </div>
+                    </div>
+                    <button class="module-start" onclick="startModule('fundamentals')">Start Learning</button>
+                </div>
+
+                <!-- Transaction Mechanics Module -->
+                <div class="module-card" data-module="transactions">
+                    <div class="module-header">
+                        <h3>Transaction Mechanics</h3>
+                        <div class="module-status">
+                            <span class="difficulty">Intermediate</span>
+                            <span class="duration">3-4 hours</span>
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <p>Deep dive into how Bitcoin transactions actually work with live examples</p>
+                        <ul class="learning-objectives">
+                            <li>Inputs, outputs, and UTXOs</li>
+                            <li>Transaction fees and mempool</li>
+                            <li>Script types and addresses</li>
+                        </ul>
+                        <div class="module-preview" id="transactions-preview">
+                            <div class="live-transaction" id="latest-transaction">
+                                Loading latest transaction...
+                            </div>
+                        </div>
+                    </div>
+                    <button class="module-start" onclick="startModule('transactions')">Start Learning</button>
+                </div>
+
+                <!-- Security & Custody Module -->
+                <div class="module-card" data-module="security">
+                    <div class="module-header">
+                        <h3>Security & Custody</h3>
+                        <div class="module-status">
+                            <span class="difficulty">Essential</span>
+                            <span class="duration">2-3 hours</span>
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <p>Learn to secure your Bitcoin properly through guided practice</p>
+                        <ul class="learning-objectives">
+                            <li>Private keys and seed phrases</li>
+                            <li>Wallet types and security models</li>
+                            <li>Common security mistakes to avoid</li>
+                        </ul>
+                        <div class="module-preview" id="security-preview">
+                            <div class="security-tip">
+                                <strong>Practice:</strong> Generate and secure a test wallet (no real funds)
+                            </div>
+                        </div>
+                    </div>
+                    <button class="module-start" onclick="startModule('security')">Start Learning</button>
+                </div>
+            </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Get in touch with us.</p>
+        <!-- Interactive Simulations -->
+        <section id="simulate" class="simulations">
+            <div class="section-header">
+                <h2>Interactive Bitcoin Simulations</h2>
+                <p>Practice with real Bitcoin tools in a safe environment</p>
+            </div>
+
+            <div class="simulations-grid">
+                <!-- Transaction Simulator -->
+                <div class="simulation-card">
+                    <h3>Transaction Simulator</h3>
+                    <p>Build and analyze Bitcoin transactions with current network data</p>
+                    <div class="simulation-preview">
+                        <div class="tx-builder" id="tx-simulator">
+                            <div class="simulation-controls">
+                                <button onclick="loadSimulation('transaction')">Launch Simulator</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fee Calculator -->
+                <div class="simulation-card">
+                    <h3>Smart Fee Calculator</h3>
+                    <p>Calculate optimal fees using live mempool data</p>
+                    <div class="simulation-preview">
+                        <div class="fee-calculator" id="fee-calculator">
+                            <div class="simulation-controls">
+                                <button onclick="loadSimulation('fees')">Launch Calculator</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wallet Security Simulator -->
+                <div class="simulation-card">
+                    <h3>Wallet Security Trainer</h3>
+                    <p>Practice wallet security with interactive scenarios</p>
+                    <div class="simulation-preview">
+                        <div class="security-trainer" id="security-trainer">
+                            <div class="simulation-controls">
+                                <button onclick="loadSimulation('security')">Launch Trainer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI-Generated Courses -->
+        <section id="courses" class="ai-courses">
+            <div class="section-header">
+                <h2>AI-Generated Courses</h2>
+                <p>Personalized learning paths created by your Bitcoin MCP agents</p>
+                <div class="course-generator">
+                    <button class="generate-course" onclick="generateNewCourse()">Generate New Course</button>
+                    <div class="generation-options">
+                        <select id="course-topic">
+                            <option value="lightning">Lightning Network</option>
+                            <option value="mining">Bitcoin Mining</option>
+                            <option value="economics">Bitcoin Economics</option>
+                            <option value="history">Bitcoin History</option>
+                            <option value="development">Bitcoin Development</option>
+                        </select>
+                        <select id="course-level">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses-grid" id="generated-courses">
+                <!-- Courses will be dynamically loaded here -->
+                <div class="course-placeholder">
+                    <p>Generate your first AI-powered course to get started!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bitcoin Intelligence Dashboard -->
+        <section id="intelligence" class="intelligence">
+            <div class="section-header">
+                <h2>Bitcoin Intelligence</h2>
+                <p>Real-time insights from your Bitcoin monitoring agents</p>
+            </div>
+
+            <div class="intelligence-dashboard">
+                <div class="intelligence-summary" id="intelligence-summary">
+                    <h3>Latest Intelligence Summary</h3>
+                    <div class="summary-content" id="summary-content">
+                        Loading latest intelligence...
+                    </div>
+                    <button onclick="updateIntelligence()">Refresh Intelligence</button>
+                </div>
+
+                <div class="threat-monitor" id="threat-monitor">
+                    <h3>Security Alerts</h3>
+                    <div class="alerts-list" id="security-alerts">
+                        No current security alerts
+                    </div>
+                </div>
+
+                <div class="educational-opportunities" id="educational-opportunities">
+                    <h3>Educational Insights</h3>
+                    <div class="opportunities-list" id="edu-opportunities">
+                        Loading educational opportunities...
+                    </div>
+                </div>
+
+                <div class="market-intelligence" id="market-intelligence">
+                    <h3>Market Intelligence</h3>
+                    <div class="market-data" id="market-data">
+                        Loading market analysis...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Tools -->
+        <section id="tools" class="tools">
+            <div class="section-header">
+                <h2>Interactive Bitcoin Tools</h2>
+                <p>Practical tools powered by real Bitcoin data</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Address Validator</h3>
+                    <p>Validate and analyze Bitcoin addresses</p>
+                    <div class="tool-interface">
+                        <input type="text" id="address-input" placeholder="Enter Bitcoin address">
+                        <button onclick="validateAddress()">Validate</button>
+                        <div class="tool-result" id="address-result"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h3>Unit Converter</h3>
+                    <p>Convert between Bitcoin units</p>
+                    <div class="tool-interface">
+                        <input type="number" id="amount-input" placeholder="Amount">
+                        <select id="from-unit">
+                            <option value="btc">BTC</option>
+                            <option value="sats">Satoshis</option>
+                            <option value="mbtc">mBTC</option>
+                        </select>
+                        <span>to</span>
+                        <select id="to-unit">
+                            <option value="sats">Satoshis</option>
+                            <option value="btc">BTC</option>
+                            <option value="mbtc">mBTC</option>
+                        </select>
+                        <button onclick="convertUnits()">Convert</button>
+                        <div class="tool-result" id="conversion-result"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h3>Transaction Explorer</h3>
+                    <p>Explore and decode Bitcoin transactions</p>
+                    <div class="tool-interface">
+                        <input type="text" id="txid-input" placeholder="Enter transaction ID">
+                        <button onclick="exploreTx()">Explore</button>
+                        <div class="tool-result" id="tx-result"></div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 My Website. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Learn Bitcoin By Doing</h3>
+                <p>Master Bitcoin through hands-on experience and AI-powered education</p>
+            </div>
+            <div class="footer-section">
+                <h4>Learning Modules</h4>
+                <ul>
+                    <li><a href="#learn">Bitcoin Fundamentals</a></li>
+                    <li><a href="#learn">Transaction Mechanics</a></li>
+                    <li><a href="#learn">Security & Custody</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>AI-Powered Features</h4>
+                <ul>
+                    <li><a href="#simulate">Interactive Simulations</a></li>
+                    <li><a href="#courses">Generated Courses</a></li>
+                    <li><a href="#intelligence">Bitcoin Intelligence</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="#tools">Address Validator</a></li>
+                    <li><a href="#tools">Unit Converter</a></li>
+                    <li><a href="#tools">Transaction Explorer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Learn Bitcoin By Doing. Powered by MCP Agent Kit.</p>
+        </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p id="loading-message">Connecting to Bitcoin MCP Agents...</p>
+    </div>
+
+    <!-- Modal for Interactive Learning -->
+    <div id="learning-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLearningModal()">&times;</span>
+            <div id="learning-content">
+                <!-- Dynamic learning content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/mcp-client.js"></script>
+    <script src="js/bitcoin-data.js"></script>
+    <script src="js/simulations.js"></script>
+    <script src="js/course-generator.js"></script>
+    <script src="js/intelligence.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
