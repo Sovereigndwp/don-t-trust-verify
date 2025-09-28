@@ -6,6 +6,7 @@
     <title>Learn Bitcoin By Doing - Interactive Bitcoin Education</title>
     <meta name="description" content="Master Bitcoin through hands-on experience, real-time data, and interactive simulations powered by AI">
     <link rel="stylesheet" href="css/style-enhanced.css">
+    <link rel="stylesheet" href="css/ai-agents.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#ai-agents">AI Learning</a></li>
                 <li><a href="#why-bitcoin">Why Bitcoin</a></li>
                 <li><a href="#learn">Learn</a></li>
                 <li><a href="#simulate">Simulate</a></li>
@@ -76,7 +78,129 @@
             </div>
         </section>
 
-        <!-- Why Bitcoin - First Principles Section -->
+    <!-- AI-Powered Learning Agents Section -->
+    <section id="ai-agents" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">AI-Powered Bitcoin Learning Agents</h2>
+            <p class="section-intro">Experience Bitcoin education through cutting-edge generative AI agents that create personalized, interactive learning experiences just for you.</p>
+            
+            <!-- Story Generator -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">📖</span> Your Bitcoin Journey</h3>
+                <p>Generate personalized Bitcoin stories based on your learning level and interests.</p>
+                <button class="btn-primary" onclick="window.aiAgents.storyAgent.generatePersonalizedStory()">Create My Story</button>
+                <div id="story-output" class="agent-output"></div>
+            </div>
+
+            <!-- Visual Concept Synthesizer -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">🎨</span> Visual Concept Explorer</h3>
+                <p>Transform complex Bitcoin concepts into visual metaphors and interactive animations.</p>
+                <select id="concept-selector" class="concept-select">
+                    <option value="blockchain">Blockchain</option>
+                    <option value="mining">Mining</option>
+                    <option value="lightning">Lightning Network</option>
+                    <option value="consensus">Consensus</option>
+                </select>
+                <button class="btn-primary" onclick="window.aiAgents.visualAgent.generateVisualExplanation(document.getElementById('concept-selector').value)">Visualize Concept</button>
+                <div id="visual-output" class="agent-output"></div>
+            </div>
+
+            <!-- Debate Simulator -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">💬</span> Bitcoin Debate Arena</h3>
+                <p>Watch AI agents debate Bitcoin from multiple perspectives - economist vs environmentalist, technologist vs regulator.</p>
+                <input type="text" id="debate-topic" placeholder="Enter debate topic (e.g., 'Bitcoin and Energy')" class="debate-input">
+                <button class="btn-primary" onclick="window.aiAgents.debateAgent.createDebate(document.getElementById('debate-topic').value)">Start Debate</button>
+                <div id="debate-output" class="agent-output"></div>
+            </div>
+
+            <!-- Future Scenario Generator -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">🔮</span> Bitcoin Future Simulator</h3>
+                <p>Explore realistic scenarios of Bitcoin's impact on the world in 2030, 2040, and beyond.</p>
+                <div class="timeframe-selector">
+                    <button class="timeframe-btn" data-timeframe="nearTerm">2025-2030</button>
+                    <button class="timeframe-btn" data-timeframe="midTerm">2030-2040</button>
+                    <button class="timeframe-btn" data-timeframe="longTerm">2040+</button>
+                </div>
+                <div id="future-output" class="agent-output"></div>
+            </div>
+
+            <!-- Personal Advisor -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">🎯</span> Personal Bitcoin Advisor</h3>
+                <p>Get personalized Bitcoin strategies based on your goals, risk tolerance, and situation.</p>
+                <div class="advisor-form">
+                    <select id="risk-tolerance" class="advisor-select">
+                        <option value="conservative">Conservative</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="aggressive">Aggressive</option>
+                    </select>
+                    <select id="time-horizon" class="advisor-select">
+                        <option value="short-term">Short-term (< 1 year)</option>
+                        <option value="medium-term">Medium-term (1-5 years)</option>
+                        <option value="long-term">Long-term (5+ years)</option>
+                    </select>
+                    <button class="btn-primary" onclick="window.aiAgents.advisorAgent.generatePersonalStrategy({riskTolerance: document.getElementById('risk-tolerance').value, timeHorizon: document.getElementById('time-horizon').value})">Get My Strategy</button>
+                </div>
+                <div id="advisor-output" class="agent-output"></div>
+            </div>
+
+            <!-- Blockchain Poetry -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">✨</span> Blockchain Poetry Generator</h3>
+                <p>Transform real-time blockchain data into educational poetry and haikus.</p>
+                <button class="btn-primary" onclick="window.aiAgents.poetryAgent.generateBlockchainPoetry({}, 'haiku')">Generate Haiku</button>
+                <button class="btn-secondary" onclick="window.aiAgents.poetryAgent.generateBlockchainPoetry({}, 'sonnet')">Create Sonnet</button>
+                <div id="poetry-output" class="agent-output"></div>
+            </div>
+
+            <!-- Time Machine -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">⏰</span> Bitcoin Time Machine</h3>
+                <p>Travel through Bitcoin's history from the genesis block to the future you're building.</p>
+                <div class="era-selector">
+                    <button class="era-btn" data-era="genesis">2008-2009: Genesis</button>
+                    <button class="era-btn" data-era="earlyDays">2010-2011: Early Days</button>
+                    <button class="era-btn" data-era="mainstream">2017: Mainstream</button>
+                    <button class="era-btn" data-era="institutional">2020: Institutional</button>
+                    <button class="era-btn" data-era="future">2024+: Your Era</button>
+                </div>
+                <div id="timemachine-output" class="agent-output"></div>
+            </div>
+
+            <!-- Philosophy Generator -->
+            <div class="agent-card">
+                <h3><span class="agent-icon">🤔</span> Bitcoin Philosophy Explorer</h3>
+                <p>Explore deep philosophical questions about Bitcoin, freedom, sovereignty, and the nature of money.</p>
+                <select id="philosophy-topic" class="philosophy-select">
+                    <option value="sovereignty">Sovereignty</option>
+                    <option value="freedom">Freedom</option>
+                    <option value="value">Value</option>
+                    <option value="trust">Trust</option>
+                    <option value="time">Time</option>
+                </select>
+                <select id="philosophy-framework" class="philosophy-select">
+                    <option value="libertarian">Libertarian</option>
+                    <option value="cypherpunk">Cypherpunk</option>
+                    <option value="austrian">Austrian Economics</option>
+                    <option value="ethical">Ethical</option>
+                </select>
+                <button class="btn-primary" onclick="window.aiAgents.philosophyAgent.generatePhilosophicalDiscussion(document.getElementById('philosophy-topic').value, document.getElementById('philosophy-framework').value)">Explore Philosophy</button>
+                <div id="philosophy-output" class="agent-output"></div>
+            </div>
+
+            <!-- Agent Orchestra -->
+            <div class="agent-orchestra">
+                <h3>🎭 Agent Orchestra</h3>
+                <p>Combine multiple AI agents for a comprehensive learning experience tailored to your journey.</p>
+                <button class="btn-special" onclick="window.orchestrateAgents()">Launch Full Experience</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Bitcoin - First Principles Section -->
         <section id="why-bitcoin" class="why-bitcoin">
             <div class="section-header">
                 <h2>Why Bitcoin: First Principles</h2>
@@ -568,5 +692,59 @@
     <script src="js/intelligence.js"></script>
     <script src="js/tools.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/ai-agents.js"></script>
+    <script src="js/ai-agents-extended.js"></script>
+    <script>
+        // Initialize AI Agents when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the AI agents with MCP client
+            window.aiAgents = new BitcoinAIAgents(window.mcpClient);
+            
+            // Set up event listeners for buttons
+            document.querySelectorAll('.timeframe-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const timeframe = this.dataset.timeframe;
+                    window.aiAgents.futureAgent.generateScenario(timeframe).then(result => {
+                        document.getElementById('future-output').innerHTML = formatAgentOutput(result);
+                        document.getElementById('future-output').classList.add('active');
+                    });
+                });
+            });
+            
+            document.querySelectorAll('.era-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const era = this.dataset.era;
+                    window.aiAgents.timeMachineAgent.travelToEra(era).then(result => {
+                        document.getElementById('timemachine-output').innerHTML = formatAgentOutput(result);
+                        document.getElementById('timemachine-output').classList.add('active');
+                    });
+                });
+            });
+            
+            // Orchestrate all agents for comprehensive experience
+            window.orchestrateAgents = async function() {
+                const outputs = await Promise.all([
+                    window.aiAgents.storyAgent.generatePersonalizedStory(),
+                    window.aiAgents.visualAgent.generateVisualExplanation('blockchain'),
+                    window.aiAgents.futureAgent.generateScenario('nearTerm'),
+                    window.aiAgents.advisorAgent.generatePersonalStrategy()
+                ]);
+                
+                // Display all outputs in a special orchestrated view
+                alert('Full AI Experience Launched! Check each agent card for your personalized content.');
+            };
+            
+            // Helper function to format agent output
+            function formatAgentOutput(result) {
+                if (typeof result === 'object') {
+                    return `<div class="formatted-output">
+                        <h4>Generated Content</h4>
+                        <pre>${JSON.stringify(result, null, 2)}</pre>
+                    </div>`;
+                }
+                return result;
+            }
+        });
+    </script>
 </body>
 </html>
